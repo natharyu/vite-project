@@ -1,9 +1,4 @@
-$primary-color: rgb(23, 23, 122);
-$secondary-color: rgb(79, 79, 224);
-$tertiary-color: rgb(0, 132, 255);
-$light: rgb(245, 245, 245);
-$dark: rgb(0, 0, 0);
-$mid-dark: rgb(128, 128, 128);
+@import "src/assets/style/_variables.scss";
 
 header {
   width: 100%;

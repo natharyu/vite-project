@@ -1,63 +1,51 @@
-$primary-color: rgb(23, 23, 122);
-$secondary-color: rgb(79, 79, 224);
-$tertiary-color: rgb(0, 132, 255);
-$light: rgb(245, 245, 245);
-$dark: rgb(0, 0, 0);
-$mid-dark: rgb(128, 128, 128);
+@import "src/assets/style/_variables.scss";
 
 #card {
-  width: 100%;
+  width: 20%;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
-  justify-content: center;
-  div {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid $dark;
-    border-radius: 0.5rem;
-    background-color: $primary-color;
-    transform: scale(1);
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid $dark;
+  border-radius: 0.5rem;
+  background-color: $primary-color;
+  transform: scale(1);
+  transition: 0.5s;
+  &:hover {
+    background-color: $tertiary-color;
+    transform: scale(1.2);
+    z-index: 1;
     transition: 0.5s;
+    cursor: pointer;
+  }
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    transition: 0.3s;
+    cursor: pointer;
     &:hover {
-      background-color: $tertiary-color;
-      transform: scale(1.1);
-      transition: 0.5s;
-      cursor: pointer;
-    }
-    button {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 0.5rem;
+      background-color: $mid-dark;
+      color: $dark;
       transition: 0.3s;
-      cursor: pointer;
-      &:hover {
-        background-color: $mid-dark;
-        color: $dark;
-        transition: 0.3s;
-      }
     }
-    img {
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-    h3 {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: $light;
-      text-decoration: underline;
-    }
-    p {
-      font-size: 1rem;
-      color: $light;
-    }
+  }
+  img {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $light;
+    text-decoration: underline;
+  }
+  p {
+    font-size: 1rem;
+    color: $light;
   }
 }

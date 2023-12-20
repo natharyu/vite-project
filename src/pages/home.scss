@@ -1,0 +1,25 @@
+@import "src/assets/style/_variables.scss";
+
+section {
+  width: 80%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  background-color: $tertiary-color;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+  }
+}
