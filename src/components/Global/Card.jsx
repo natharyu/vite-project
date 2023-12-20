@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import { FcSearch } from "react-icons/fc";
 import "./card.scss";
 
 function Card({ characters }) {
@@ -14,7 +15,9 @@ function Card({ characters }) {
     <>
       {characters.map((character) => (
         <article id="card" key={character.id}>
-          <button onClick={() => showModal(character)}>Voir plus</button>
+          <button onClick={() => showModal(character)}>
+            <FcSearch size={20} />
+          </button>
           <img src={character.img_url} alt={character.name} />
           <h3>{character.name}</h3>
           <p>Sexe: {character.gender}</p>
