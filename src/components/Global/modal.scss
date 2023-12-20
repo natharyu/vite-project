@@ -1,0 +1,76 @@
+$primary-color: rgb(23, 23, 122);
+$secondary-color: rgb(79, 79, 224);
+$tertiary-color: rgb(0, 132, 255);
+$light: rgb(245, 245, 245);
+$dark: rgb(0, 0, 0);
+$mid-dark: rgb(128, 128, 128);
+
+#modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  button {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    cursor: pointer;
+    margin: 1rem;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    background-color: $dark;
+    color: $light;
+    font-weight: bold;
+    transition: 0.5s;
+    &:hover {
+      background-color: $mid-dark;
+      color: $dark;
+      transition: 0.5s;
+    }
+  }
+  section {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    background-color: $tertiary-color;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    gap: 1rem;
+    article {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    img {
+      width: 100%;
+      border-radius: 0.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $light;
+    }
+    p {
+      font-size: 1rem;
+      color: $light;
+      span {
+        font-weight: bold;
+        color: $dark;
+        text-decoration: underline;
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

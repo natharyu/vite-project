@@ -1,0 +1,48 @@
+$primary-color: rgb(23, 23, 122);
+$secondary-color: rgb(79, 79, 224);
+$tertiary-color: rgb(0, 132, 255);
+$light: rgb(245, 245, 245);
+$dark: rgb(0, 0, 0);
+$mid-dark: rgb(128, 128, 128);
+
+header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary-color;
+  div {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    h1 {
+      font-size: 2rem;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      a {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        color: $light;
+        background-color: $dark;
+        border: 1px solid $mid-dark;
+        &:hover {
+          background-color: $mid-dark;
+          color: $dark;
+          transition: 0.5s;
+          border: 1px solid $dark;
+        }
+      }
+    }
+  }
+}

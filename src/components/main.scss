@@ -1,0 +1,29 @@
+$primary-color: rgb(23, 23, 122);
+$secondary-color: rgb(79, 79, 224);
+$tertiary-color: rgb(0, 132, 255);
+$light: rgb(245, 245, 245);
+$dark: rgb(0, 0, 0);
+$mid-dark: rgb(128, 128, 128);
+
+main {
+  width: 100%;
+  min-height: 80%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $primary-color;
+  section {
+    width: 80%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $tertiary-color;
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+}
