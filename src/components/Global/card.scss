@@ -4,6 +4,7 @@
 #card {
   @include flex-col-center;
   width: 20%;
+  position: relative;
   gap: 0.5rem;
   padding: 0.5rem;
   border: 1px solid $dark;
@@ -11,6 +12,7 @@
   background-color: $primary-color;
   transform: scale(1);
   transition: 0.5s;
+  z-index: 0;
   &:hover {
     background-color: $tertiary-color;
     transform: scale(1.2);
@@ -26,6 +28,7 @@
     border: none;
     border-radius: 0.5rem;
     transition: 0.3s;
+    z-index: 5;
     cursor: pointer;
     &:hover {
       background-color: $mid-dark;

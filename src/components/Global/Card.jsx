@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import { FcSearch } from "react-icons/fc";
 import "./card.scss";
@@ -6,6 +7,7 @@ import "./card.scss";
 function Card({ characters }) {
   const [character, setCharacter] = useState({});
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
   function showModal(character) {
     setModal(true);
     setCharacter(character);
@@ -14,6 +16,7 @@ function Card({ characters }) {
     <>
       {characters.map((character) => (
         <article id="card" key={character.id}>
+          {/* <article id="card" key={character.id} onClick={() => navigate(`/character/${character.id}`)}></article> */}
           <button onClick={() => showModal(character)}>
             <FcSearch size={20} />
           </button>
