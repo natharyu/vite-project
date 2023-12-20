@@ -15,9 +15,9 @@ function Card({ characters }) {
   return (
     <>
       {characters.map((character) => (
-        <article id="card" key={character.id}>
+        <article id="card" key={character.id} onClick={() => showModal(character)}>
           {/* <article id="card" key={character.id} onClick={() => navigate(`/character/${character.id}`)}></article> */}
-          <button onClick={() => showModal(character)}>
+          <button onClick={() => navigate(`/character/${character.id}`)}>
             <FcSearch size={20} />
           </button>
           <img src={character.img_url} alt={character.name} />
