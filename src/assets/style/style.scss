@@ -1,8 +1,12 @@
+@font-face {
+  font-family: "Final Space";
+  src: url("../font/conthrax-sb.otf");
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Final Space";
 }
 
 html,
