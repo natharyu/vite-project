@@ -4,12 +4,3 @@ $tertiary-color: rgb(0, 132, 255);
 $light: rgb(245, 245, 245);
 $dark: rgb(0, 0, 0);
 $mid-dark: rgb(128, 128, 128);
-
-:export {
-  primaryColor: $primary-color;
-  secondaryColor: $secondary-color;
-  tertiaryColor: $tertiary-color;
-  light: $light;
-  dark: $dark;
-  midDark: $mid-dark;
-}

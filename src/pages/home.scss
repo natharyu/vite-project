@@ -1,14 +1,12 @@
 @import "src/assets/style/_variables.scss";
+@import "src/assets/style/_mixins.scss";
 
 section {
+  @include flex-col-center;
   width: 80%;
   height: 100%;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 1rem;
-  justify-content: center;
   background-color: $tertiary-color;
   h2 {
     font-size: 1.5rem;
@@ -18,8 +16,8 @@ section {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
     padding: 1rem;
-    justify-content: center;
   }
 }
