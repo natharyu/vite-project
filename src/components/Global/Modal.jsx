@@ -1,4 +1,5 @@
 import "./modal.scss";
+import { RiCloseFill } from "react-icons/ri";
 
 function Modal({ character, setModal }) {
   function hideModal() {
@@ -6,7 +7,9 @@ function Modal({ character, setModal }) {
   }
   return (
     <div id="modal">
-      <button onClick={hideModal}>Fermer</button>
+      <button onClick={hideModal}>
+        <RiCloseFill size={20} />
+      </button>
       <section>
         <article>
           <img src={character.img_url} alt={character.name} />

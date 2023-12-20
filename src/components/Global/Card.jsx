@@ -8,7 +8,6 @@ function Card({ characters }) {
   const [modal, setModal] = useState(false);
   function showModal(character) {
     setModal(true);
-    document.removeEventListener("scroll");
     setCharacter(character);
   }
   return (
