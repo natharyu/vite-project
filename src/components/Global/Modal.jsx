@@ -1,9 +1,9 @@
 import "./modal.scss";
 import { RiCloseFill } from "react-icons/ri";
 
-function Modal({ character, setModal }) {
+function Modal({ character, modal, setModal }) {
   function hideModal() {
-    setModal(false);
+    setModal(!modal);
   }
   return (
     <div id="modal">

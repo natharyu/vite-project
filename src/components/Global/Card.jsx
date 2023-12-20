@@ -9,7 +9,7 @@ function Card({ characters }) {
   const [modal, setModal] = useState(false);
   const navigate = useNavigate();
   function showModal(character) {
-    setModal(true);
+    setModal(!modal);
     setCharacter(character);
   }
   return (
@@ -26,7 +26,7 @@ function Card({ characters }) {
           <p>Origine : {character.origin}</p>
         </article>
       ))}
-      {modal && <Modal character={character} setModal={setModal} />}
+      {modal && <Modal character={character} modal={modal} setModal={setModal} />}
     </>
   );
 }
