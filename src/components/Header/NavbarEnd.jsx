@@ -1,8 +1,9 @@
+import { NavLink } from "react-router-dom";
 function NavbarEnd() {
   return (
     <nav>
-      <a href="/">Accueil</a>
-      <a href="/characters">Personnages</a>
+      <NavLink to={"/"}>Accueil</NavLink>
+      <NavLink to={"/characters"}>Personnages</NavLink>
     </nav>
   );
 }
