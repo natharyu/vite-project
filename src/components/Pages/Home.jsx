@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "../components/Global/Card";
+import Card from "../Global/Card";
 import "./home.scss";
 
 function Home() {

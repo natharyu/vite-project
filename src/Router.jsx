@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Characters from "./pages/Characters";
-import Character from "./pages/Character";
-import Home from "./pages/Home";
+import Characters from "./components/pages/Characters";
+import Character from "./components/pages/Character";
+import Home from "./components/pages/Home";
 import App from "./App";
 
 function Router() {
