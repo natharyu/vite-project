@@ -5,17 +5,6 @@ import Footer from "./components/Footer/Footer";
 import { useEffect } from "react";
 
 function App() {
-  const testBackend = async () => {
-    await fetch("http://localhost:3000/")
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  };
-
-  useEffect(() => {
-    testBackend();
-  });
-
   return (
     <>
       <Header />
