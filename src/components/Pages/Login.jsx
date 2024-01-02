@@ -33,9 +33,9 @@ function Login() {
     <form onSubmit={handleSubmit}>
       {error && <span>{error}</span>}
       <label htmlFor="username">Nom d'utilisateur</label>
-      <input type="text" id="username" />
+      <input type="text" id="username" placeholder="admin" />
       <label htmlFor="password">Mot de passe</label>
-      <input type="password" id="password" />
+      <input type="password" id="password" placeholder="password" />
       <button type="submit">Login</button>
     </form>
   );
