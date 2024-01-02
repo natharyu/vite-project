@@ -3,6 +3,7 @@ import Characters from "./components/pages/Characters";
 import Character from "./components/pages/Character";
 import Home from "./components/pages/Home";
 import App from "./App";
+import Login from "./components/Pages/Login";
 
 function Router() {
   return (
@@ -12,6 +13,7 @@ function Router() {
           <Route path="" element={<Home />} />
           <Route path="characters" element={<Characters />} />
           <Route path="character/:id" element={<Character />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>

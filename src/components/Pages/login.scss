@@ -1,0 +1,38 @@
+@import "src/assets/style/_variables.scss";
+@import "src/assets/style/_mixins.scss";
+
+form {
+  @include flex-col-center;
+  gap: 1rem;
+  background-color: $secondary-color;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  span {
+    color: $error;
+  }
+  label {
+    color: $light;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  input {
+    width: 50%;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    padding: 0 2rem;
+    border-radius: 1rem;
+  }
+  button {
+    width: 50%;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    padding: 0 2rem;
+    border-radius: 1rem;
+    background-color: $light;
+    &:hover {
+      cursor: pointer;
+      background-color: $mid-dark;
+      color: $dark;
+    }
+  }
+}
