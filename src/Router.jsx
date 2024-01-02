@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Character from "@/components/pages/Character";
-import Characters from "@/components/pages/Characters";
-import Home from "@/components/pages/Home";
+import Character from "./components/Pages/Character";
+import Characters from "./components/Pages/Characters";
+import Home from "./components/Pages/Home";
 import App from "@/App";
-import Login from "@/components/Pages/Login";
+import Login from "./components/Pages/Login";
 
 function Router() {
   return (
