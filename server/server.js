@@ -10,6 +10,10 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(router);
 
+server.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
