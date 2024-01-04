@@ -29,6 +29,7 @@ function NavbarEnd() {
           <NavLink to={"/register"}>S'enregistrer</NavLink>
         </>
       )}
+      <NavLink to={"/users"}>Utilisateurs</NavLink>
     </nav>
   );
 }

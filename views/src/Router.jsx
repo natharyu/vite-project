@@ -5,8 +5,29 @@ import Home from "./components/Pages/Home";
 import App from "./App";
 import Login from "./components/Pages/Login";
 import Register from "./components/Pages/Register";
+import Users from "./components/Pages/Users";
+import { useDispatch } from "react-redux";
+import { login, logout } from "./features/authSlice";
+import { useEffect } from "react";
 
 function Router() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      await fetch("/auth/checkAuth", {
+        method: "GET",
+      }).then((res) => {
+        if (res.status === 204) {
+          dispatch(logout());
+        } else {
+          dispatch(login());
+        }
+      });
+    };
+    checkAuth().catch((err) => console.log(err));
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -16,6 +37,7 @@ function Router() {
           <Route path="character/:id" element={<Character />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="users" element={<Users />} />
         </Route>
       </Routes>
     </BrowserRouter>
