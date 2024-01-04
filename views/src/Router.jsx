@@ -4,6 +4,7 @@ import Characters from "./components/Pages/Characters";
 import Home from "./components/Pages/Home";
 import App from "./App";
 import Login from "./components/Pages/Login";
+import Register from "./components/Pages/Register";
 
 function Router() {
   return (
@@ -14,6 +15,7 @@ function Router() {
           <Route path="characters" element={<Characters />} />
           <Route path="character/:id" element={<Character />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>
