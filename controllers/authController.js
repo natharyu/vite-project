@@ -1,22 +1,18 @@
 import bcrypt from "bcrypt";
+import fs from "fs";
 
-const users = [
-  { username: "admin", password: "$2b$10$50OzEI4KeUrUOnhVSfyK/ebOlDX7YfcVYAb3tH7xMaHRtpPDxc1R2" },
-  { username: "user", password: "$2b$10$50OzEI4KeUrUOnhVSfyK/ebOlDX7YfcVYAb3tH7xMaHRtpPDxc1R2" },
-  { username: "guest", password: "$2b$10$50OzEI4KeUrUOnhVSfyK/ebOlDX7YfcVYAb3tH7xMaHRtpPDxc1R2" },
-  { username: "guest2", password: "$2b$10$50OzEI4KeUrUOnhVSfyK/ebOlDX7YfcVYAb3tH7xMaHRtpPDxc1R2" },
-];
+const userList = JSON.parse(fs.readFileSync("./controllers/users.json", "utf-8"));
 
 const register = (req, res) => {
   try {
     const { username, password } = req.body;
-    users.map((user) => {
-      if (user.username === username) {
-        return res.status(400).json({ error: "Utilisateur existant" });
-      }
-    });
+    const userExist = userList.find((user) => user.username === username);
+    if (userExist) {
+      return res.status(400).json({ error: "Utilisateur existant" });
+    }
     const hashedPassword = bcrypt.hashSync(password, 10);
-    users.push({ username, hashedPassword });
+    userList.push({ username, hashedPassword });
+    fs.writeFileSync("./controllers/users.json", JSON.stringify(userList));
     return res.status(200).json({ message: "Enregistrement reussie" });
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de l'enregistrement" });
@@ -26,16 +22,15 @@ const register = (req, res) => {
 const login = (req, res) => {
   try {
     const { username, password } = req.body;
-    users.map((user) => {
-      if (user.username === username && bcrypt.compareSync(password, user.password)) {
-        req.session.isLogged = true;
-        req.session.username = username;
-        return res.status(200).json({ message: "Connexion reussie" });
-      }
-    });
-    return res.status(400).json({ error: "Mauvais identifiants" });
+    const userFind = userList.find((user) => user.username === username && bcrypt.compareSync(password, user.password));
+    if (!userFind) {
+      return res.status(400).json({ error: "Mauvais identifiants" });
+    }
+    req.session.isLogged = true;
+    req.session.username = username;
+    return res.status(200).json({ message: "Connexion reussie" });
   } catch (error) {
-    res.status(500).json({ error: "Erreur lors de la connexion" });
+    return res.status(500).json({ error: "Erreur lors de la connexion" });
   }
 };
 

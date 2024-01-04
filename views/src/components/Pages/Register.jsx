@@ -35,9 +35,9 @@ function Register() {
       <h2>S'enregistrer</h2>
       {error && <span>{error}</span>}
       <label htmlFor="username">Nom d'utilisateur</label>
-      <input type="text" id="username" placeholder="admin" />
+      <input type="text" id="username" placeholder="Nom d'utilisateur" />
       <label htmlFor="password">Mot de passe</label>
-      <input type="password" id="password" placeholder="password" />
+      <input type="password" id="password" placeholder="Mot de passe" />
       <button type="submit">S'enregistrer</button>
     </form>
   );

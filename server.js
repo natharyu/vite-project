@@ -30,12 +30,13 @@ server.use((req, res, next) => {
   res.locals.session = req.session;
   next();
 });
-server.use(router);
 
 server.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/dist", "index.html"));
+  res.render("index");
+  // res.sendFile(path.join(__dirname, "views/dist", "index.html"));
 });
 
+server.use(router);
 server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
