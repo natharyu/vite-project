@@ -9,6 +9,7 @@ import Users from "./components/Pages/Users";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./features/authSlice";
 import { useEffect } from "react";
+import Error404 from "./components/Pages/Error404";
 
 function Router() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function Router() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="users" element={<Users />} />
+          <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
     </BrowserRouter>

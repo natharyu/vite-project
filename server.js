@@ -4,6 +4,7 @@ import router from "./routes/router.js";
 import session from "express-session";
 import path from "path";
 
+const __dirname = path.resolve();
 const server = express();
 const port = 3000;
 server.use(express.static("views/dist"));
@@ -31,12 +32,11 @@ server.use((req, res, next) => {
   next();
 });
 
-server.get("/", (req, res) => {
-  res.render("index");
-  // res.sendFile(path.join(__dirname, "views/dist", "index.html"));
+server.use(router);
+server.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/dist", "index.html"));
 });
 
-server.use(router);
 server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
