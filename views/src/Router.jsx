@@ -7,7 +7,7 @@ import Login from "./components/Pages/Login";
 import Register from "./components/Pages/Register";
 import Users from "./components/Pages/Users";
 import { useDispatch } from "react-redux";
-import { login, logout } from "./features/authSlice";
+import { checkAuth } from "./store/slices/authSlice.js";
 import { useEffect } from "react";
 import Error404 from "./components/Pages/Error404";
 
@@ -15,18 +15,7 @@ function Router() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      await fetch("/auth/checkAuth", {
-        method: "GET",
-      }).then((res) => {
-        if (res.status === 204) {
-          dispatch(logout());
-        } else {
-          dispatch(login());
-        }
-      });
-    };
-    checkAuth().catch((err) => console.log(err));
+    dispatch(checkAuth());
   }, []);
 
   return (

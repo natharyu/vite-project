@@ -1,22 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { fetchCharacter } from "../../store/slices/charactersSlice";
+import { useDispatch, useSelector } from "react-redux";
 import "./character.scss";
 function Character() {
-  const [character, setCharacter] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { character, loading: isLoading } = useSelector((state) => state.characters);
   const { id } = useParams();
+
   useEffect(() => {
-    const fetchCharacters = async () => {
-      setIsLoading(true);
-      await fetch(`https://finalspaceapi.com/api/v0/character/${id}`).then((response) => {
-        response.json().then((data) => {
-          setCharacter(data);
-          setIsLoading(false);
-        });
-      });
-    };
-    fetchCharacters();
-  }, []);
+    dispatch(fetchCharacter(id));
+  }, [dispatch]);
+
   return (
     <section>
       {isLoading ? (

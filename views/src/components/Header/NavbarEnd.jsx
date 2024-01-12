@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { logout } from "../../features/authSlice";
+import { logout } from "../../store/slices/authSlice.js";
 function NavbarEnd() {
   const isLogged = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await fetch("http://localhost:3000/auth/logout", { method: "GET" }).then((response) => {
+    await fetch("http://localhost:3001/auth/logout", { method: "GET" }).then((response) => {
       if (response.ok) {
         dispatch(logout());
         navigate("/");

@@ -6,7 +6,7 @@ import path from "path";
 
 const __dirname = path.resolve();
 const server = express();
-const port = 3000;
+const port = 3001;
 server.use(express.static("views/dist"));
 server.use(cors({ credentials: true }));
 server.use(express.json());

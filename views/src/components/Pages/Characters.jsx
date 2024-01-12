@@ -2,34 +2,19 @@ import { useState, useEffect } from "react";
 import Card from "../Global/Card";
 import "./characters.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { setCharacters, setFilteredCharacters } from "../../features/charactersSlice";
+import { fetchCharacters, getFilteredCharacters } from "../../store/slices/charactersSlice.js";
 function Characters() {
-  const characters = useSelector((state) => state.characters.characters);
   const filteredCharacters = useSelector((state) => state.characters.filteredCharacters);
+  const isLoading = useSelector((state) => state.characters.loading);
   const dispatch = useDispatch();
   const [emptyFilter, setEmptyFilter] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchCharacters = async () => {
-      setIsLoading(true);
-      await fetch("https://finalspaceapi.com/api/v0/character/").then((response) => {
-        response.json().then((data) => {
-          dispatch(setCharacters(data));
-          dispatch(setFilteredCharacters(data));
-          setIsLoading(false);
-        });
-      });
-    };
-    fetchCharacters().catch(console.error);
-  }, []);
+    dispatch(fetchCharacters());
+  }, [dispatch]);
 
   const handleInputChange = (e) => {
-    dispatch(setFilteredCharacters(characters));
-    const filteredCharacters = characters.filter((character) =>
-      character.name.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    dispatch(setFilteredCharacters(filteredCharacters));
+    dispatch(getFilteredCharacters(e.target.value));
     if (filteredCharacters.length === 0) {
       setEmptyFilter(true);
     } else {

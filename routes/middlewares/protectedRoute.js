@@ -1,7 +1,6 @@
 const AdminRoute = (req, res, next) => {
   if (req.session.role !== "admin") {
-    console.log("Unauthorized");
-    return res.redirect("/");
+    return res.redirect("/error");
   }
   next();
 };

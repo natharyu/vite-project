@@ -1,43 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRandomCharacter } from "../../store/slices/charactersSlice.js";
 import Card from "../Global/Card";
 import "./home.scss";
 
 function Home() {
-  const [characters, setCharacters] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [randomCharacters, setRandomCharacters] = useState([]);
+  const isLoading = useSelector((state) => state.characters.loading);
+  const characters = useSelector((state) => state.characters.characters);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchCharacters = async () => {
-      setIsLoading(true);
-      await fetch("https://finalspaceapi.com/api/v0/character/").then((response) => {
-        response.json().then((data) => {
-          setCharacters(data);
-          getRandomCharacters(data);
-          setIsLoading(false);
-        });
-      });
-    };
-    fetchCharacters().catch(console.error);
-  }, []);
-
-  const getRandomCharacters = (data) => {
-    const characters = [];
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * data.length);
-      if (!characters.includes(data[randomIndex])) {
-        characters.push(data[randomIndex]);
-        setRandomCharacters(characters);
-      } else {
-        i--;
-      }
-    }
-  };
+    dispatch(fetchRandomCharacter());
+  }, [dispatch]);
 
   return (
     <section>
       <h2>Home</h2>
-      <div>{isLoading ? <p>Chargement...</p> : <Card characters={randomCharacters} />}</div>
+      <div>{isLoading ? <p>Chargement...</p> : <Card characters={characters} />}</div>
     </section>
   );
 }

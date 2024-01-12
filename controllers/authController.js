@@ -1,34 +1,42 @@
 import bcrypt from "bcrypt";
-import fs from "fs";
-
-const userList = JSON.parse(fs.readFileSync("./controllers/users.json", "utf-8"));
+import Query from "../model/Query.js";
 
 const register = async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const userExist = userList.find((user) => user.username === username);
-    if (userExist) {
-      return res.status(400).json({ error: "Utilisateur existant" });
+    const { lastname, firstname, email, password, address, birthday } = req.body;
+    const [existingUser] = await Query.getOneByField("users", "email", email);
+    if (existingUser) {
+      return res.status(400).json({ error: "E-mail déjà inscrit" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    userList.push({ username, password: hashedPassword, role: "user" });
-    fs.writeFileSync("./controllers/users.json", JSON.stringify(userList));
+    await Query.create("users", {
+      lastname,
+      firstname,
+      email,
+      password: hashedPassword,
+      address,
+      birthday,
+    });
     return res.status(200).json({ message: "Enregistrement reussie" });
   } catch (error) {
-    res.status(500).json({ error: "Erreur lors de l'enregistrement" });
+    return res.status(500).json({ error: "Erreur lors de l'enregistrement" });
   }
 };
 
-const login = (req, res) => {
+const login = async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const userFind = userList.find((user) => user.username === username && bcrypt.compare(password, user.password));
-    if (!userFind) {
-      return res.status(400).json({ error: "Mauvais identifiants" });
+    const { email, password } = req.body;
+    const [user] = await Query.getOneByField("users", "email", email);
+    if (!user) {
+      return res.status(401).json({ error: "Erreur lors de la connexion." });
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "Erreur lors de la connexion." });
     }
     req.session.isLogged = true;
-    req.session.username = userFind.username;
-    req.session.role = userFind.role;
+    req.session.username = user.email;
+    req.session.role = user.role;
     return res.status(200).json({ message: "Connexion reussie" });
   } catch (error) {
     return res.status(500).json({ error: "Erreur lors de la connexion" });
@@ -45,14 +53,6 @@ const logout = (req, res) => {
   }
 };
 
-const getUsers = (req, res) => {
-  try {
-    return res.status(200).json({ users: userList });
-  } catch (error) {
-    return res.status(500).json({ error: "Erreur lors de la connexion" });
-  }
-};
-
 const checkAuth = (req, res) => {
   try {
     if (req.session.isLogged) {
@@ -65,4 +65,4 @@ const checkAuth = (req, res) => {
   }
 };
 
-export default { login, register, logout, getUsers, checkAuth };
+export default { login, register, logout, checkAuth };
