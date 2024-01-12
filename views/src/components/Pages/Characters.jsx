@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCharacters, getFilteredCharacters } from "../../store/slices/charactersSlice.js";
 import Card from "../Global/Card";
 import "./characters.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchCharacters, getFilteredCharacters } from "../../store/slices/charactersSlice.js";
+
 function Characters() {
-  const filteredCharacters = useSelector((state) => state.characters.filteredCharacters);
-  const isLoading = useSelector((state) => state.characters.loading);
+  const { loading: isLoading, filteredCharacters } = useSelector((state) => state.characters);
   const dispatch = useDispatch();
   const [emptyFilter, setEmptyFilter] = useState(false);
 

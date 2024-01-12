@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchCharacter } from "../../store/slices/charactersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./character.scss";
+
 function Character() {
   const dispatch = useDispatch();
   const { character, loading: isLoading } = useSelector((state) => state.characters);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import "./login&register.scss";
 import { useNavigate } from "react-router-dom";
+import "./login&register.scss";
 
 function Register() {
   const [error, setError] = useState(null);

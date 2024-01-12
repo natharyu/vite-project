@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
-import { FcSearch } from "react-icons/fc";
 import "./card.scss";
 
 function Card({ characters }) {

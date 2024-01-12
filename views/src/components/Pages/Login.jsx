@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./login&register.scss";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../store/slices/authSlice.js";
+import "./login&register.scss";
 
 function Login() {
   const [error, setError] = useState(null);

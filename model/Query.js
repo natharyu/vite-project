@@ -1,4 +1,5 @@
 import database from "../config/database.js";
+
 class Query {
   async getAll(table) {
     const query = `SELECT * FROM ${table}`;

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+
 function NavbarStart() {
   return (
     <h1>
-      <a href="/">Final Space</a>
+      <Link to="/">Final Space</Link>
     </h1>
   );
 }
